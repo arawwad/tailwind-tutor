@@ -5,3 +5,9 @@ Tailwind Tutor
 - Instant feedback on image match
 
 [Live Demo](https://tailwind-tutor.onrender.com/)
+
+Todo
+
+- [ ] Add examples & navigation
+- [ ] Add notes and tips
+- [ ] Better styling

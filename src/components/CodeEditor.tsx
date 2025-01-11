@@ -1,32 +1,31 @@
 import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-html';
-import 'ace-builds/src-noconflict/theme-github';
-import 'ace-builds/src-noconflict/ext-language_tools';
-import 'ace-builds/src-noconflict/snippets/html';
+import 'ace-builds/esm-resolver';
 
-const HtmlEditor = ({
+import { Title } from './Title';
+
+export function HtmlEditor({
   code,
   setCode,
-}: {
+}: Readonly<{
   code: string;
   setCode: (newCode: string) => void;
-}) => (
-  <div className="col-span-2">
-    <AceEditor
-      style={{ width: '100%', height: '500px' }}
-      mode="html"
-      theme="github"
-      name="html-editor"
-      onChange={setCode}
-      fontSize={14}
-      value={code}
-      setOptions={{
-        enableBasicAutocompletion: true,
-        enableLiveAutocompletion: true,
-        enableSnippets: true,
-      }}
-    />
-  </div>
-);
-
-export default HtmlEditor;
+}>) {
+  return (
+    <div>
+      <Title>Code Editor</Title>
+      <AceEditor
+        mode="html"
+        theme="cobalt"
+        name="html-editor"
+        onChange={setCode}
+        fontSize={14}
+        value={code}
+        setOptions={{
+          enableBasicAutocompletion: true,
+          enableLiveAutocompletion: true,
+          wrap: true,
+        }}
+      />
+    </div>
+  );
+}
