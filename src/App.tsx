@@ -5,11 +5,10 @@ import { Preview } from './components/Preview';
 import { Target } from './components/Target';
 
 import './App.css';
+import { Lesson1_1 } from './lessons/lesson1/Lesson1_1';
 
 function App() {
-  const [code, setCode] = useState(
-    `<button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Click Me!</button>`
-  );
+  const [code, setCode] = useState(() => Lesson1_1.initialCode);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 h-screen">
@@ -17,7 +16,9 @@ function App() {
 
       <div className="grid grid-row-2 gap-4">
         <Preview code={code} />
-        <Target />
+        <Target>
+          <Lesson1_1 />
+        </Target>
       </div>
     </div>
   );

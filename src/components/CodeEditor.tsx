@@ -24,7 +24,9 @@ export function HtmlEditor({
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
           wrap: true,
+          showGutter: false,
         }}
+        width="650px"
       />
     </div>
   );

@@ -35,7 +35,7 @@ export function Preview({ code }: Readonly<{ code: string }>) {
   return (
     <div>
       <Title>
-        Preview
+        Live Preview
         {passed && (
           <span
             style={{ color: '#75FB4C' }}
