@@ -1,12 +1,8 @@
 export function Target({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-gray-800 my-4">Target</h1>
-      <div
-        className="border border-black rounded"
-        id="target"
-        style={{ width: 500, height: 500 }}
-      >
+    <div className="bg-gray-50 rounded-lg p-4 shadow-md">
+      <h2 className="text-lg font-semibold mb-4">Target</h2>
+      <div id="target" className=" bg-white border border-gray-200 rounded-md">
         {children}
       </div>
     </div>

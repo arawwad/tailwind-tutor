@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import sanitize from 'sanitize-html';
-import { Title } from './Title';
 import { InitialData, initialize, testPassed } from '../utils/compareImages';
 
 export function Preview({ code }: Readonly<{ code: string }>) {
@@ -33,8 +32,8 @@ export function Preview({ code }: Readonly<{ code: string }>) {
   }, [code]);
 
   return (
-    <div>
-      <Title>
+    <div className="bg-gray-50 rounded-lg p-4 shadow-md">
+      <h2 className="text-lg font-semibold mb-4">
         Live Preview
         {passed && (
           <span
@@ -44,13 +43,12 @@ export function Preview({ code }: Readonly<{ code: string }>) {
             check_circle
           </span>
         )}
-      </Title>
+      </h2>
       <div
-        className="border border-black rounded"
-        id="preview"
-        style={{ width: 500, height: 500 }}
         dangerouslySetInnerHTML={{ __html: sanitizedCode }}
-      />
+        id="preview"
+        className="bg-white border border-gray-200 rounded-md"
+      ></div>
     </div>
   );
 }

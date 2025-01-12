@@ -1,74 +1,120 @@
 import { Lesson } from '../types';
+const buttons = [
+  {
+    className: 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded',
+    label: 'Primary',
+  },
+  {
+    className: 'bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded',
+    label: 'Secondary',
+  },
+  {
+    className:
+      'border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-4 py-2 rounded',
+    label: 'Outlined',
+  },
+  {
+    className:
+      'bg-transparent text-blue-500 hover:bg-blue-100 px-4 py-2 rounded',
+    label: 'Ghost',
+  },
+  {
+    className: 'bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded',
+    label: 'Success',
+  },
+  {
+    className: 'bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded',
+    label: 'Danger',
+  },
+  {
+    className: 'bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded',
+    label: 'Warning',
+  },
+  {
+    className: 'bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed',
+    label: 'Disabled',
+    disabled: true,
+  },
+  {
+    className:
+      'bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-full',
+    label: 'Pill Button',
+  },
+  {
+    className:
+      'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white px-4 py-2 rounded',
+    label: 'Gradient',
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow-lg hover:shadow-xl',
+    label: 'Shadow',
+  },
+  {
+    className: 'bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded',
+    label: 'Flat',
+  },
+  {
+    className:
+      'bg-gray-200 text-gray-700 px-4 py-2 rounded-lg shadow-inner hover:shadow-md',
+    label: 'Neumorphic',
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transform active:translate-y-1',
+    label: '3D Button',
+  },
+  {
+    className: 'text-blue-500 hover:underline px-4 py-2',
+    label: 'Text Button',
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 text-sm rounded',
+    label: 'Small Button',
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 text-lg rounded',
+    label: 'Large Button',
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white h-12 w-12 rounded-full flex items-center justify-center',
+    label: 'A',
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded relative',
+    label: (
+      <>
+        Notifications
+        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+          5
+        </span>
+      </>
+    ),
+  },
+  {
+    className:
+      'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-transform transform hover:scale-110',
+    label: 'Animated Button',
+  },
+];
 
 export const Lesson1_1: Lesson = () => (
-  <div className=" grid grid-cols-3 gap-4">
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-      Primary
-    </button>
-    <button className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">
-      Secondary
-    </button>
-    <button className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-4 py-2 rounded">
-      Outlined
-    </button>
-    <button className="bg-transparent text-blue-500 hover:bg-blue-100 px-4 py-2 rounded">
-      Ghost
-    </button>
-    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
-      Success
-    </button>
-    <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
-      Danger
-    </button>
-    <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
-      Warning
-    </button>
-    <button
-      className="bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed"
-      disabled
-    >
-      Disabled
-    </button>
-
-    <button className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-full">
-      Pill Button
-    </button>
-    <button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white px-4 py-2 rounded">
-      Gradient
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow-lg hover:shadow-xl">
-      Shadow
-    </button>
-    <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded">
-      Flat
-    </button>
-    <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg shadow-inner hover:shadow-md">
-      Neumorphic
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transform active:translate-y-1">
-      3D Button
-    </button>
-    <button className="text-blue-500 hover:underline px-4 py-2">
-      Text Button
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 text-sm rounded">
-      Small Button
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 text-lg rounded">
-      Large Button
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white h-12 w-12 rounded-full flex items-center justify-center">
-      A
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded relative">
-      Notifications
-      <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-        5
-      </span>
-    </button>
-    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-transform transform hover:scale-110">
-      Animated Button
-    </button>
+  <div className="grid grid-cols-3 gap-4">
+    {buttons.map((button, index) => (
+      <button
+        data-tooltip-id="hints"
+        data-tooltip-content={button.className}
+        key={index}
+        className={button.className}
+        disabled={button.disabled}
+      >
+        {button.label}
+      </button>
+    ))}
   </div>
 );
 

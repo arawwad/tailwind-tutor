@@ -16,6 +16,7 @@ export async function initialize(): Promise<InitialData> {
 
   const diffCanvas = document.createElement('canvas');
   diffCanvas.setAttribute('willReadFrequently', 'true');
+  diffCanvas.classList.add('hidden');
   document.body.appendChild(diffCanvas);
 
   diffCanvas.width = width;

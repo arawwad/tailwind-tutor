@@ -1,8 +1,6 @@
 import AceEditor from 'react-ace';
 import 'ace-builds/esm-resolver';
 
-import { Title } from './Title';
-
 export function HtmlEditor({
   code,
   setCode,
@@ -11,11 +9,11 @@ export function HtmlEditor({
   setCode: (newCode: string) => void;
 }>) {
   return (
-    <div>
-      <Title>Code Editor</Title>
+    <div className="bg-gray-900 text-white rounded-lg p-4 shadow-md">
+      <h2 className="text-lg font-semibold mb-4">Code Editor</h2>
       <AceEditor
         mode="html"
-        theme="cobalt"
+        theme="dawn"
         name="html-editor"
         onChange={setCode}
         fontSize={14}
@@ -26,7 +24,8 @@ export function HtmlEditor({
           wrap: true,
           showGutter: false,
         }}
-        width="650px"
+        width="100%"
+        className="rounded-md"
       />
     </div>
   );

@@ -6,20 +6,19 @@ import { Target } from './components/Target';
 
 import './App.css';
 import { Lesson1_1 } from './lessons/lesson1/Lesson1_1';
+import { Tooltip } from 'react-tooltip';
 
 function App() {
   const [code, setCode] = useState(() => Lesson1_1.initialCode);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 h-screen">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <HtmlEditor code={code} setCode={setCode} />
-
-      <div className="grid grid-row-2 gap-4">
-        <Preview code={code} />
-        <Target>
-          <Lesson1_1 />
-        </Target>
-      </div>
+      <Preview code={code} />
+      <Target>
+        <Lesson1_1 />
+      </Target>
+      <Tooltip id="hints" />
     </div>
   );
 }
