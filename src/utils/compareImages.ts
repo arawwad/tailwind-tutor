@@ -4,6 +4,7 @@ import pixelmatch from 'pixelmatch';
 export interface InitialData {
   width: number;
   height: number;
+  initalDiff: number;
   baseImage: Uint8ClampedArray;
   diffImage: Uint8ClampedArray;
 }
@@ -23,11 +24,19 @@ export async function initialize(): Promise<InitialData> {
   diffCanvas.height = height;
   const diffContext = diffCanvas.getContext('2d')!;
   const diffImageData = diffContext.createImageData(width, height);
+  const initalData = {
+    width,
+    height,
+    baseImage: img1.data,
+    diffImage: diffImageData.data,
+    initalDiff: 0,
+  };
+  const initalDiff = await numOfDiffPixels(initalData);
 
-  return { width, height, baseImage: img1.data, diffImage: diffImageData.data };
+  return { ...initalData, initalDiff };
 }
 
-export async function testPassed({
+export async function numOfDiffPixels({
   width,
   height,
   baseImage,
@@ -46,6 +55,5 @@ export async function testPassed({
     height,
     { threshold: 0.1 }
   );
-
-  return numDiffPixels === 0;
+  return numDiffPixels;
 }

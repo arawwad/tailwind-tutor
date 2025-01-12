@@ -1,9 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import sanitize from 'sanitize-html';
-import { InitialData, initialize, testPassed } from '../utils/compareImages';
+import {
+  InitialData,
+  initialize,
+  numOfDiffPixels,
+} from '../utils/compareImages';
 
 export function Preview({ code }: Readonly<{ code: string }>) {
-  const [passed, setPassed] = useState(false);
+  const [percentComplete, setPercentComplete] = useState(0);
   const initialData = useRef<InitialData>();
 
   useEffect(() => {
@@ -22,8 +26,10 @@ export function Preview({ code }: Readonly<{ code: string }>) {
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       if (!initialData.current) return;
-      const didTestsPass = await testPassed(initialData.current);
-      setPassed(didTestsPass);
+      const currentDiff = await numOfDiffPixels(initialData.current);
+      setPercentComplete(
+        100 - 100 * (currentDiff / initialData.current.initalDiff)
+      );
     }, 500);
 
     return () => {
@@ -33,16 +39,15 @@ export function Preview({ code }: Readonly<{ code: string }>) {
 
   return (
     <div className="bg-gray-50 rounded-lg p-4 shadow-md">
-      <h2 className="text-lg font-semibold mb-4">
-        Live Preview
-        {passed && (
-          <span
-            style={{ color: '#75FB4C' }}
-            className="material-symbols-outlined"
-          >
-            check_circle
-          </span>
-        )}
+      <h2 className="text-lg font-semibold mb-4 flex justify-items-stretch items-center">
+        Preview
+        <div className="ml-2 w-full h-1 bg-gray-300 rounded-lg overflow-hidden">
+          <div
+            id="progress-bar"
+            className="h-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"
+            style={{ width: `${percentComplete}%` }}
+          ></div>
+        </div>
       </h2>
       <div
         dangerouslySetInnerHTML={{ __html: sanitizedCode }}
