@@ -38,9 +38,9 @@ export function Preview({ code }: Readonly<{ code: string }>) {
   }, [code]);
 
   return (
-    <div className="bg-gray-50 rounded-lg p-4 shadow-md">
-      <h2 className="text-lg font-semibold mb-4 flex justify-items-stretch items-center">
-        Preview
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg">
+      <h2 className="text-xl font-bold mb-4">
+        Live Preview
         <div className="ml-2 w-full h-1 bg-gray-300 rounded-lg overflow-hidden">
           <div
             id="progress-bar"
@@ -52,7 +52,7 @@ export function Preview({ code }: Readonly<{ code: string }>) {
       <div
         dangerouslySetInnerHTML={{ __html: sanitizedCode }}
         id="preview"
-        className="bg-white border border-gray-200 rounded-md"
+        className="bg-white border border-gray-300 rounded-md"
       ></div>
     </div>
   );

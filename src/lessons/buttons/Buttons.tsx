@@ -102,8 +102,8 @@ const buttons = [
   },
 ];
 
-export const Lesson1_1: Lesson = () => (
-  <div className="grid grid-cols-3 gap-4">
+export const Buttons: Lesson = () => (
+  <div className="grid grid-cols-3 gap-4 py-4 items-center justify-items-center">
     {buttons.map((button, index) => (
       <button
         data-tooltip-id="hints"
@@ -118,7 +118,7 @@ export const Lesson1_1: Lesson = () => (
   </div>
 );
 
-Lesson1_1.initialCode = `<div class=" grid grid-cols-3 gap-4">
+Buttons.initialCode = `<div class="grid grid-cols-3 gap-4 py-4 items-center justify-items-center">
     <button class="">
       Primary
     </button>

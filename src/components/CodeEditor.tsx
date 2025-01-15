@@ -9,8 +9,8 @@ export function HtmlEditor({
   setCode: (newCode: string) => void;
 }>) {
   return (
-    <div className="bg-gray-900 text-white rounded-lg p-4 shadow-md">
-      <h2 className="text-lg font-semibold mb-4">Code Editor</h2>
+    <div className="bg-gray-900 text-white rounded-xl p-6 shadow-lg">
+      <h2 className="text-xl font-bold mb-4">Code Editor</h2>
       <AceEditor
         mode="html"
         theme="dawn"
