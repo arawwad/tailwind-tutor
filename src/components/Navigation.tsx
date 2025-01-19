@@ -1,21 +1,42 @@
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 
-const navigationItems = {
-  Buttons: [{ name: 'Misc', path: '/buttons' }],
-  Cards: [{ name: 'Basic', path: '/cards-basic' }],
+type RouteConfig = {
+  subLesson: string;
+  path: string;
+  Component: React.LazyExoticComponent<React.FC>;
 };
 
+const lessons = import.meta.glob('../lessons/**/*.tsx');
+
+export const routes = Object.keys(lessons).reduce((allRoutes, filePath) => {
+  const Component = lazy(
+    lessons[filePath] as () => Promise<{ default: React.FC }>
+  );
+  const cleanPath = filePath.replace('../lessons/', '').replace(/\.tsx$/, '');
+  const [lesson, subLesson] = cleanPath.split('/');
+
+  allRoutes[lesson] ||= [];
+  allRoutes[lesson].push({
+    Component,
+    subLesson,
+    path: cleanPath.toLocaleLowerCase(),
+  });
+
+  return allRoutes;
+}, {} as Record<string, RouteConfig[]>);
+
 const activeLessonMap = Object.fromEntries(
-  Object.values(navigationItems).flatMap((item) =>
-    item.map(({ path }) => [path, item])
-  )
+  Object.values(routes).flatMap((item) => item.map(({ path }) => [path, item]))
 );
 
+console.log(activeLessonMap);
+
 export function Navigation() {
-  const [currentLesson, setCurrentLesson] =
-    useState<{ name: string; path: string }[]>();
+  const [currentLesson, setCurrentLesson] = useState<RouteConfig[]>();
   const { pathname } = useLocation();
+
+  console.log(activeLessonMap, pathname);
 
   useEffect(() => {
     // @ts-ignore
@@ -27,7 +48,7 @@ export function Navigation() {
       <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg">
         <h2 className="text-xl font-bold mb-4">Navigation</h2>
         <div className="mt-2 flex space-x-4 overflow-x-auto scrollbar-hide">
-          {Object.entries(navigationItems).map(([lesson, subLessons]) => (
+          {Object.entries(routes).map(([lesson, subLessons]) => (
             <button
               onClick={() => setCurrentLesson(subLessons)}
               key={lesson}
@@ -41,7 +62,7 @@ export function Navigation() {
           ))}
         </div>
         <div className="mt-2 flex space-x-4 overflow-x-auto scrollbar-hide">
-          {currentLesson?.map(({ name, path }) => (
+          {currentLesson?.map(({ subLesson, path }) => (
             <NavLink
               className={({ isActive }) =>
                 `border border-blue-500 text-blue-500 hover:bg-blue-500
@@ -50,9 +71,9 @@ export function Navigation() {
           }`
               }
               to={path}
-              key={name}
+              key={subLesson}
             >
-              {name}
+              {subLesson}
             </NavLink>
           ))}
         </div>

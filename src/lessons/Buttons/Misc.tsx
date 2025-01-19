@@ -186,3 +186,5 @@ export const initialCode = `<div class="grid grid-cols-3 gap-4 py-4 items-center
       Animated Button
     </button>
   </div>`;
+
+export default Buttons;

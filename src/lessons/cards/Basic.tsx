@@ -32,3 +32,5 @@ export const initalCode = `<div class="max-w-sm mx-auto bg-white p-4 rounded-lg 
   <button class="">Learn More</button>
 </div>
 `;
+
+export default CardsBasic;
