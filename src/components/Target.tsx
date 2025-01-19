@@ -1,17 +1,20 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
 export function Target({
   children,
   setCode,
   initialCode,
+  initialDiff,
 }: Readonly<{
   children: React.ReactNode;
   setCode: (code: string) => void;
   initialCode: Promise<string>;
+  initialDiff: MutableRefObject<number | null>;
 }>) {
   useEffect(() => {
     initialCode.then((code) => {
       setCode(code);
+      initialDiff.current = null;
     });
   }, []);
   return (

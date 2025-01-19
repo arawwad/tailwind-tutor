@@ -1,14 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import sanitize from 'sanitize-html';
-import { initialize, numOfDiffPixels } from '../utils/compareImages';
-import { useLocation } from 'react-router';
 
-export function Preview({ code }: Readonly<{ code: string }>) {
-  const [percentComplete, setPercentComplete] = useState(0);
-  const { pathname } = useLocation();
-
-  useEffect(() => {}, [pathname]);
-
+export function Preview({
+  code,
+  percentComplete,
+}: Readonly<{ code: string; percentComplete: number }>) {
   const sanitizedCode = useMemo(
     () =>
       sanitize(code, {
@@ -17,18 +13,6 @@ export function Preview({ code }: Readonly<{ code: string }>) {
       }),
     [code]
   );
-
-  useEffect(() => {
-    const timeoutId = setTimeout(async () => {
-      const data = await initialize();
-      const currentDiff = await numOfDiffPixels(data);
-      setPercentComplete(100 - 100 * (currentDiff / data.initalDiff));
-    }, 500);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [code]);
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg">
