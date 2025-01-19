@@ -1,20 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import sanitize from 'sanitize-html';
-import {
-  InitialData,
-  initialize,
-  numOfDiffPixels,
-} from '../utils/compareImages';
+import { initialize, numOfDiffPixels } from '../utils/compareImages';
 import { useLocation } from 'react-router';
 
 export function Preview({ code }: Readonly<{ code: string }>) {
   const [percentComplete, setPercentComplete] = useState(0);
-  const initialData = useRef<InitialData>();
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    initialize().then((data) => (initialData.current = data));
-  }, [pathname]);
+  useEffect(() => {}, [pathname]);
 
   const sanitizedCode = useMemo(
     () =>
@@ -27,11 +20,9 @@ export function Preview({ code }: Readonly<{ code: string }>) {
 
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
-      if (!initialData.current) return;
-      const currentDiff = await numOfDiffPixels(initialData.current);
-      setPercentComplete(
-        100 - 100 * (currentDiff / initialData.current.initalDiff)
-      );
+      const data = await initialize();
+      const currentDiff = await numOfDiffPixels(data);
+      setPercentComplete(100 - 100 * (currentDiff / data.initalDiff));
     }, 500);
 
     return () => {
