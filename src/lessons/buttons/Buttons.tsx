@@ -1,4 +1,3 @@
-import { Lesson } from '../types';
 const buttons = [
   {
     className: 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded',
@@ -102,7 +101,7 @@ const buttons = [
   },
 ];
 
-export const Buttons: Lesson = () => (
+export const Buttons = () => (
   <div className="grid grid-cols-3 gap-4 py-4 items-center justify-items-center">
     {buttons.map((button, index) => (
       <button
@@ -118,7 +117,7 @@ export const Buttons: Lesson = () => (
   </div>
 );
 
-Buttons.initialCode = `<div class="grid grid-cols-3 gap-4 py-4 items-center justify-items-center">
+export const initialCode = `<div class="grid grid-cols-3 gap-4 py-4 items-center justify-items-center">
     <button class="">
       Primary
     </button>

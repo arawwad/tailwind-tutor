@@ -5,14 +5,16 @@ import {
   initialize,
   numOfDiffPixels,
 } from '../utils/compareImages';
+import { useLocation } from 'react-router';
 
 export function Preview({ code }: Readonly<{ code: string }>) {
   const [percentComplete, setPercentComplete] = useState(0);
   const initialData = useRef<InitialData>();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     initialize().then((data) => (initialData.current = data));
-  }, []);
+  }, [pathname]);
 
   const sanitizedCode = useMemo(
     () =>
