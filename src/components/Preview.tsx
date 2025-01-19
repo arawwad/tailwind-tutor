@@ -45,7 +45,7 @@ export function Preview({ code }: Readonly<{ code: string }>) {
       <div
         dangerouslySetInnerHTML={{ __html: sanitizedCode }}
         id="preview"
-        className="bg-white border border-gray-300 rounded-md"
+        className="bg-white border border-gray-300 rounded-md px-2 py-4"
       ></div>
     </div>
   );

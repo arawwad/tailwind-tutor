@@ -1,5 +1,8 @@
-import AceEditor from 'react-ace';
-import 'ace-builds/esm-resolver';
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs';
+
+import 'prismjs/components/prism-markup';
+import 'prismjs/';
 
 export function HtmlEditor({
   code,
@@ -11,21 +14,17 @@ export function HtmlEditor({
   return (
     <div className="bg-gray-900 text-white rounded-xl p-6 shadow-lg">
       <h2 className="text-xl font-bold mb-4">Code Editor</h2>
-      <AceEditor
-        mode="html"
-        theme="dawn"
-        name="html-editor"
-        onChange={setCode}
-        fontSize={14}
+      <Editor
         value={code}
-        setOptions={{
-          enableBasicAutocompletion: true,
-          enableLiveAutocompletion: true,
-          wrap: true,
-          showGutter: false,
+        onValueChange={(code) => setCode(code)}
+        highlight={(code) => highlight(code, languages.html!, 'html')}
+        padding={10}
+        style={{
+          fontFamily: '"Fira code", "Fira Mono", monospace',
+          fontSize: 12,
+          overflow: 'auto',
         }}
-        width="100%"
-        className="rounded-md"
+        className="bg-gray-700 rounded-xl p-6 shadow-lg max-h-[50vh]"
       />
     </div>
   );
