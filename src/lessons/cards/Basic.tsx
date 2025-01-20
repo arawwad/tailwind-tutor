@@ -1,6 +1,10 @@
 export function CardsBasic() {
   return (
-    <div className="max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md">
+    <div
+      data-tooltip-id="hints"
+      data-tooltip-content="max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md"
+      className="max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md"
+    >
       <h2
         data-tooltip-id="hints"
         data-tooltip-content="text-xl font-bold text-gray-800"
@@ -26,7 +30,7 @@ export function CardsBasic() {
   );
 }
 
-export const initialCode = `<div class="max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md">
+export const initialCode = `<div class="">
   <h2 class="">Basic Card</h2>
   <p class="">This is a simple card with a description and a button.</p>
   <button class="">Learn More</button>

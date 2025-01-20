@@ -1,6 +1,10 @@
 function CardPricing() {
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-lg shadow-md p-6 text-center">
+    <div
+      data-tooltip-id="hints"
+      data-tooltip-content="max-w-sm mx-auto bg-white rounded-lg shadow-md p-6 text-center"
+      className="max-w-sm mx-auto bg-white rounded-lg shadow-md p-6 text-center"
+    >
       <h2
         data-tooltip-content="text-2xl font-bold text-gray-800"
         data-tooltip-id="hints"
@@ -37,7 +41,7 @@ function CardPricing() {
 
 export default CardPricing;
 
-export const initialCode = `<div class="max-w-sm mx-auto bg-white rounded-lg shadow-md p-6 text-center">
+export const initialCode = `<div class="">
   <h2 class="">Pro Plan</h2>
   <p class="">$29/month</p>
   <ul class="">

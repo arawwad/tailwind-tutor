@@ -1,6 +1,10 @@
 function CardImage() {
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div
+      data-tooltip-id="hints"
+      data-tooltip-content="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden"
+      className="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden"
+    >
       <img
         data-tooltip-id="hints"
         data-tooltip-content="w-full h-40 object-cover"
@@ -38,7 +42,7 @@ function CardImage() {
 export default CardImage;
 
 export const initialCode = `
-<div class="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+<div class="">
   <img src="https://placehold.co/400x200" alt="Card Image" class="">
   <div class="">
     <h2 class="">Card with Image</h2>
