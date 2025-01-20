@@ -8,8 +8,14 @@ export function Preview({
   const sanitizedCode = useMemo(
     () =>
       sanitize(code, {
-        allowedTags: sanitize.defaults.allowedTags.concat('button'),
-        allowedAttributes: { '*': ['class'] },
+        allowedTags: sanitize.defaults.allowedTags.concat('button', 'img'),
+        allowedAttributes: { '*': ['class'], img: ['src'] },
+        exclusiveFilter: function (frame) {
+          return (
+            frame.tag === 'img' &&
+            !/^https:\/\/placehold.co/.test(frame.attribs.src)
+          );
+        },
       }),
     [code]
   );

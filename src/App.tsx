@@ -47,6 +47,7 @@ function App() {
                   path={path}
                   element={
                     <Target
+                      key={path}
                       initialCode={initialCode}
                       setCode={setCode}
                       initialDiff={initialDiff}

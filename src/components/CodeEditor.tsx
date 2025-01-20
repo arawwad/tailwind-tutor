@@ -14,18 +14,19 @@ export function HtmlEditor({
   return (
     <div className="bg-gray-900 text-white rounded-xl p-6 shadow-lg">
       <h2 className="text-xl font-bold mb-4">Code Editor</h2>
-      <Editor
-        value={code}
-        onValueChange={(code) => setCode(code)}
-        highlight={(code) => highlight(code, languages.html!, 'html')}
-        padding={10}
-        style={{
-          fontFamily: '"Fira code", "Fira Mono", monospace',
-          fontSize: 12,
-          overflow: 'auto',
-        }}
-        className="bg-gray-700 rounded-xl p-6 shadow-lg max-h-[50vh]"
-      />
+      <div className="bg-gray-700 rounded-xl max-h-[50vh] overflow-auto">
+        <Editor
+          value={code}
+          onValueChange={(code) => setCode(code)}
+          highlight={(code) => highlight(code, languages.html!, 'html')}
+          padding={10}
+          style={{
+            fontFamily: '"Fira code", "Fira Mono", monospace',
+            fontSize: 12,
+            overflow: 'auto',
+          }}
+        />
+      </div>
     </div>
   );
 }
