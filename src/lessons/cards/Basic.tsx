@@ -1,28 +1,22 @@
+import { classNameWithTooltip } from '../../utils';
+
 export function CardsBasic() {
   return (
     <div
-      data-tooltip-id="hints"
-      data-tooltip-content="max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md"
-      className="max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md"
+      {...classNameWithTooltip(
+        'max-w-sm mx-auto bg-white p-4 rounded-lg shadow-md'
+      )}
     >
-      <h2
-        data-tooltip-id="hints"
-        data-tooltip-content="text-xl font-bold text-gray-800"
-        className="text-xl font-bold text-gray-800"
-      >
+      <h2 {...classNameWithTooltip('text-xl font-bold text-gray-800')}>
         Basic Card
       </h2>
-      <p
-        data-tooltip-id="hints"
-        data-tooltip-content="mt-2 text-gray-600"
-        className="mt-2 text-gray-600"
-      >
+      <p {...classNameWithTooltip('mt-2 text-gray-600')}>
         This is a simple card with a description and a button.
       </p>
       <button
-        data-tooltip-content="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-        data-tooltip-id="hints"
-        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        {...classNameWithTooltip(
+          'mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'
+        )}
       >
         Learn More
       </button>

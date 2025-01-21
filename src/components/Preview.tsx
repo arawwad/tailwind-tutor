@@ -9,7 +9,7 @@ export function Preview({
     () =>
       sanitize(code, {
         allowedTags: sanitize.defaults.allowedTags.concat('button', 'img'),
-        allowedAttributes: { '*': ['class'], img: ['src'] },
+        allowedAttributes: { '*': ['class', 'style'], img: ['src'] },
         exclusiveFilter: function (frame) {
           return (
             frame.tag === 'img' &&

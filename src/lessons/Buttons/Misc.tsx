@@ -1,3 +1,5 @@
+import { classNameWithTooltip } from '../../utils';
+
 const buttons = [
   {
     className: 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded',
@@ -88,7 +90,11 @@ const buttons = [
     label: (
       <>
         Notifications
-        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+        <span
+          {...classNameWithTooltip(
+            'absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'
+          )}
+        >
           5
         </span>
       </>
@@ -105,10 +111,8 @@ export const Buttons = () => (
   <div className="grid grid-cols-3 gap-4 py-4 items-center justify-items-center">
     {buttons.map((button, index) => (
       <button
-        data-tooltip-id="hints"
-        data-tooltip-content={button.className}
+        {...classNameWithTooltip(button.className)}
         key={index}
-        className={button.className}
         disabled={button.disabled}
       >
         {button.label}
