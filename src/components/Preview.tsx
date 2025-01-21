@@ -8,8 +8,19 @@ export function Preview({
   const sanitizedCode = useMemo(
     () =>
       sanitize(code, {
-        allowedTags: sanitize.defaults.allowedTags.concat('button', 'img'),
-        allowedAttributes: { '*': ['class', 'style'], img: ['src'] },
+        allowedTags: sanitize.defaults.allowedTags.concat(
+          'button',
+          'img',
+          'input',
+          'svg',
+          'path'
+        ),
+        allowedAttributes: {
+          '*': ['class', 'style'],
+          img: ['src'],
+          svg: ['fill', 'viewbox', 'stroke'],
+          path: ['stroke-linecap', 'stroke-linejoin', 'stroke-width', 'd'],
+        },
         exclusiveFilter: function (frame) {
           return (
             frame.tag === 'img' &&
