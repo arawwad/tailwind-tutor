@@ -50,9 +50,9 @@ Follow these steps to set up the project locally:
 
 ## Todo
 
-[] Add more example targets for users to practice.
-[] Implement navigation for easier browsing of examples.
-[] Add tests to ensure stability and reliability.
+- [ ] Add more example targets for users to practice.
+- [x] Implement navigation for easier browsing of examples.
+- [ ] Add tests to ensure stability and reliability.
 
 ## Contributing
 
@@ -75,7 +75,7 @@ Contributions are welcome! If you have ideas, bug fixes, or feature suggestions,
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Contact
 
