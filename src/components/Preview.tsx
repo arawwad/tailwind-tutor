@@ -18,8 +18,15 @@ export function Preview({
         allowedAttributes: {
           '*': ['class', 'style'],
           img: ['src'],
-          svg: ['fill', 'viewbox', 'stroke'],
-          path: ['stroke-linecap', 'stroke-linejoin', 'stroke-width', 'd'],
+          svg: ['fill', 'viewbox', 'stroke', 'width', 'height'],
+          path: [
+            'fill-rule',
+            'clip-rule',
+            'stroke-linecap',
+            'stroke-linejoin',
+            'stroke-width',
+            'd',
+          ],
         },
         exclusiveFilter: function (frame) {
           return (
