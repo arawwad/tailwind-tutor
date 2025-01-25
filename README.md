@@ -26,16 +26,14 @@ Follow these steps to set up the project locally:
    ```
 
 2. **Install Dependencies:**
-   Make sure you have [Node.js](https://nodejs.org/) installed. Then run:
-
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Run the Development Server:**
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 4. **Open in Browser:**
